@@ -7,13 +7,12 @@ import {
   Link
 } from 'react-router-dom'
 import Header from './components/Header'
-import Login from './components/Login'
 
 class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      token: null
+      token: window.localStorage.getItem('login_auth_token')
 
     }
   }
@@ -22,13 +21,7 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Header />
-          <div>
-            {this.state.token
-              ? <h2>Hello! {this.state.username}</h2>
-              : <Login setToken={token => this.setState({ token: token })} />}
-
-          </div>
+          <Header token={this.state.token} setToken={token => this.setState({ token: token })} />
 
         </div>
       </Router>

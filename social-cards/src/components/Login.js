@@ -6,7 +6,7 @@ class Login extends React.Component {
     super()
     this.state = {
       password: '',
-      username: '',
+      username: window.localStorage.getItem('login_username') || '',
       error: null
     }
     this.handleLogin = this.handleLogin.bind(this)
@@ -15,9 +15,12 @@ class Login extends React.Component {
   handleLogin (event) {
     event.preventDefault()
     getToken(this.state.username, this.state.password)
-      .then(
-        this.props.setToken,
+      .then(token => {
+        this.props.setToken(token)
         window.localStorage.setItem('login_auth_token', token)
+        window.localStorage.setItem('login_username', this.state.username)
+      }
+
       )
       .catch(error => {
         console.log(error)

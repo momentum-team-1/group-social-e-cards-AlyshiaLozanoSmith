@@ -10,3 +10,11 @@ export function getToken (username, password) {
     password: password
   }).then(response => response.data.auth_token)
 }
+
+export function getCards (token) {
+  return request.get('/cards', {
+    headers: {
+      Authorization: 'Token ${token}'
+    }
+  }).then(response => response.data.results)
+}
