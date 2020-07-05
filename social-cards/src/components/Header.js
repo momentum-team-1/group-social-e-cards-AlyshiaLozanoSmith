@@ -7,21 +7,18 @@ import {
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
 import Login from './Login'
+import Nav from './Nav'
 
 class Header extends React.Component {
   constructor () {
     super()
-    this.state = {
-      token: window.localStorage.getItem('login_auth_token')
-
-    }
     this.handleLogout = this.handleLogout.bind(this)
   }
 
   handleLogout (event) {
     event.preventDefault()
 
-    this.setState({ token: null, username: '' })
+    this.props.setToken(null)
     window.localStorage.removeItem('login_auth_token')
     window.localStorage.removeItem('login_username')
   }
@@ -31,12 +28,13 @@ class Header extends React.Component {
       <div>
         <Router>
           <div>
-            {this.state.token
+            {this.props.token
               ? (
                 <div className='header'>
                   <h1>E-greetings</h1>
-                  <div>
-                    <button onClick={this.handleLogout}> Log out </button>
+                  <div className='nav-bar'>
+                    <Nav />
+                    <button onClick={this.handleLogout} className='logout'> Log out </button>
                   </div>
                 </div>
 
@@ -48,7 +46,7 @@ class Header extends React.Component {
                   </div>
 
                   <div>
-                    <Login setToken={this.props.setToken} />
+                    <Login setToken={this.props.setToken} username={this.props.username} />
                   </div>
                 </div>
               )}

@@ -7,13 +7,16 @@ import {
   Link
 } from 'react-router-dom'
 import Header from './components/Header'
+import CardEditor from './components/CardEditor'
+import Profile from './components/Profile'
+import Home from './components/Home'
 
 class App extends React.Component {
   constructor () {
     super()
     this.state = {
-      token: window.localStorage.getItem('login_auth_token')
-
+      token: window.localStorage.getItem('login_auth_token'),
+      username: window.localStorage.getItem('login_username') || ''
     }
   }
 
@@ -21,8 +24,14 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Header token={this.state.token} setToken={token => this.setState({ token: token })} />
-
+          <Header token={this.state.token} setToken={token => this.setState({ token: token })} username={this.state.username} />
+        </div>
+        <div>
+          <Switch>
+            <Route path='/' exact component={Home} />
+            <Route path='/add-card' component={CardEditor} />
+            <Route path='/profile'> <Profile username={this.state.username} token={this.state.token} /></Route>
+          </Switch>
         </div>
       </Router>
     )

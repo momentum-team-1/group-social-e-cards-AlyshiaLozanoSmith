@@ -6,8 +6,8 @@ class Login extends React.Component {
     super()
     this.state = {
       password: '',
-      username: window.localStorage.getItem('login_username') || '',
-      error: null
+      error: null,
+      username: window.localStorage.getItem('login_username')
     }
     this.handleLogin = this.handleLogin.bind(this)
   }
@@ -31,23 +31,25 @@ class Login extends React.Component {
   render () {
     return (
 
-      <div>
-        <form onSubmit={this.handleLogin}>
-          <div>
-            {this.state.error}
-          </div>
-          <div>
-            <label htmlFor='username'>Username</label>
-            <input id='username' type='text' value={this.state.username} onChange={event => this.setState({ username: event.target.value })} />
-          </div>
-          <div>
-            <label htmlFor='password'>Password</label>
-            <input id='password' type='text' value={this.state.password} onChange={event => this.setState({ password: event.target.value })} />
-          </div>
-          <div>
-            <button type='submit'>enter</button>
-          </div>
-        </form>
+      <div className='login'>
+        <div className='login-form'>
+          <form onSubmit={this.handleLogin}>
+            <div>
+              {this.state.error}
+            </div>
+            <div>
+              <label htmlFor='username'>Username</label>
+              <input id='username' type='text' value={this.state.username} onChange={event => this.setState({ username: event.target.value })} />
+            </div>
+            <div>
+              <label htmlFor='password'>Password</label>
+              <input id='password' type='text' value={this.state.password} onChange={event => this.setState({ password: event.target.value })} />
+            </div>
+            <div>
+              <button type='submit' className='login-button'>enter</button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
