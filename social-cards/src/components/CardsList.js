@@ -40,10 +40,13 @@ class CardsList extends React.Component {
             <Row>
               {this.state.cards.map(card => {
                 return (
-                  <div key={card.index}>
+                  <div key={card.id}>
                     <Col xs={6} md={4}>
                       <Card style={{ width: '18rem' }} key={card.url}>
-                        <Card.Body>
+                        <Card.Body className={classNames({
+                          backgroundBlue: card.color === 'blue'
+                        })}
+                        >
                           <Card.Subtitle className='mb-2 text-muted'>{card.posted_at}</Card.Subtitle>
                           <Card.Text>
                             {card.card_text}
