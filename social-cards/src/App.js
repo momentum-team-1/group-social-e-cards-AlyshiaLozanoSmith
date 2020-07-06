@@ -10,6 +10,7 @@ import Header from './components/Header'
 import CardEditor from './components/CardEditor'
 import Profile from './components/Profile'
 import Home from './components/Home'
+import CardsList from './components/CardsList'
 
 class App extends React.Component {
   constructor () {
@@ -29,8 +30,9 @@ class App extends React.Component {
         <div>
           <Switch>
             <Route path='/' exact component={Home} />
-            <Route path='/add-card' component={CardEditor} />
+            <Route path='/add-card'><CardEditor token={this.state.token} /></Route>
             <Route path='/profile'> <Profile username={this.state.username} token={this.state.token} /></Route>
+            <Route path='/cards/all'><CardsList username={this.state.username} token={this.state.token} /></Route>
           </Switch>
         </div>
       </Router>

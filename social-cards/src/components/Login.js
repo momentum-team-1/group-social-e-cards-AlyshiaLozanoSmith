@@ -6,8 +6,7 @@ class Login extends React.Component {
     super()
     this.state = {
       password: '',
-      error: null,
-      username: window.localStorage.getItem('login_username')
+      error: null
     }
     this.handleLogin = this.handleLogin.bind(this)
   }
