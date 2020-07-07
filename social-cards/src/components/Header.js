@@ -26,32 +26,30 @@ class Header extends React.Component {
   render () {
     return (
       <div>
-        <Router>
-          <div>
-            {this.props.token
-              ? (
+        <div>
+          {this.props.token
+            ? (
+              <div className='header'>
+                <h1>E-greetings</h1>
+                <div className='nav-bar'>
+                  <Nav />
+                  <button onClick={this.handleLogout} className='logout'> Log out </button>
+                </div>
+              </div>
+
+            )
+            : (
+              <div>
                 <div className='header'>
-                  <h1>E-greetings</h1>
-                  <div className='nav-bar'>
-                    <Nav />
-                    <button onClick={this.handleLogout} className='logout'> Log out </button>
-                  </div>
+                  <h1>E-Greetings</h1>
                 </div>
 
-              )
-              : (
                 <div>
-                  <div className='header'>
-                    <h1>E-Greetings</h1>
-                  </div>
-
-                  <div>
-                    <Login setToken={this.props.setToken} username={this.props.username} />
-                  </div>
+                  <Login token={this.props.token} username={this.props.username} setToken={this.props.setToken} />
                 </div>
-              )}
-          </div>
-        </Router>
+              </div>
+            )}
+        </div>
       </div>
     )
   }

@@ -28,8 +28,42 @@
 }
 
 .backgroundBlue {
-  background-color: darkblue;
+  background-color: cornflowerblue;
   color: antiquewhite;
+}
+
+.backgroundPurple {
+  background-color: blueviolet;
+  color: antiquewhite;
+}
+
+.backgroundRed {
+  background-color: crimson;
+}
+
+.borderTopDotted {
+  border-top: 7px dotted #000;
+  box-shadow: inset 0 -3px 0 0 #000, 0 3px 0 0 #000;
+}
+
+.borderBottomDotted {
+  border-bottom: 7px dotted #000;
+  box-shadow: inset 0 -3px 0 0 #000, 0 3px 0 0 #000;
+}
+
+.borderSolid {
+  border: black solid;
+}
+
+.borderDashed {
+  border: black dashed;
+}
+
+.fontHelvetica {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fontCourierNew {
+  font-family: "Courier New", Courier, monospace;
 }
 
 .nav-bar {

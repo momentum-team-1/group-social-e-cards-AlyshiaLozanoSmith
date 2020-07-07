@@ -17,7 +17,16 @@ export function getCards (token) {
       Authorization: `Token ${token}`
     }
   }).then(response => {
-    console.log(response.data)
     return response.data
+  })
+}
+
+export function deleteCard (token, cardId) {
+  return request.delete(`/api/cards/${cardId}/`, {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  }).then(response => {
+    console.log(response.data)
   })
 }

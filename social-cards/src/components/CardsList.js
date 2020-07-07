@@ -14,14 +14,12 @@ class CardsList extends React.Component {
     this.state = {
       cards: []
     }
-    console.log('constructor')
   }
 
   componentDidMount () {
     if (this.props.token) {
       getCards(this.props.token).then(cards => this.setState({ cards: cards }))
       console.log('Cards have mounted')
-      // this.setState({ card: this.state.card })
     }
   }
 
@@ -44,10 +42,17 @@ class CardsList extends React.Component {
                     <Col xs={6} md={4}>
                       <Card style={{ width: '18rem' }} key={card.url}>
                         <Card.Body className={classNames({
-                          backgroundBlue: card.color === 'blue'
+                          backgroundBlue: card.color === 'blue',
+                          backgroundRed: card.color === 'red',
+                          backgroundPurple: card.color === 'purple',
+                          borderTopDotted: card.border_style === 'dotted',
+                          borderBottomDotted: card.border_style === 'dotted',
+                          borderSolid: card.border_style === 'solid',
+                          borderDashed: card.border_style === 'dashed',
+                          fontHelvetica: card.font === 'helvetica',
+                          fontCourierNew: card.font === 'courier new'
                         })}
                         >
-                          <Card.Subtitle className='mb-2 text-muted'>{card.posted_at}</Card.Subtitle>
                           <Card.Text>
                             {card.card_text}
                           </Card.Text>
