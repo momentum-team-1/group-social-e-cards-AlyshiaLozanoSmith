@@ -9,6 +9,8 @@ import Header from './components/Header'
 import CardEditor from './components/CardEditor'
 import Profile from './components/Profile'
 import Home from './components/Home'
+import Logout from './components/Logout'
+import AllCardsList from './components/AllCardsList'
 
 class App extends React.Component {
   constructor () {
@@ -17,6 +19,13 @@ class App extends React.Component {
       token: window.localStorage.getItem('login_auth_token'),
       username: window.localStorage.getItem('login_username') || ''
     }
+    this.handleLogout = this.handleLogout.bind(this)
+  }
+
+  handleLogout (event) {
+    this.setState({ token: null, username: '' })
+    window.localStorage.removeItem('login_auth_token')
+    window.localStorage.removeItem('login_username')
   }
 
   render () {
@@ -25,13 +34,13 @@ class App extends React.Component {
         <div>
           <Header token={this.state.token} setToken={token => this.setState({ token: token })} username={this.state.username} />
         </div>
-        <div>
-          <Switch>
-            <Route path='/' exact component={Home} />
-            <Route path='/add-card'><CardEditor token={this.state.token} username={this.state.username} /></Route>
-            <Route path='/profile'> <Profile token={this.state.token} username={this.state.username} /></Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route path='/' exact component={Home} />
+          <Route path='/add-card'><CardEditor token={this.state.token} username={this.state.username} /></Route>
+          <Route path='/profile'> <Profile token={this.state.token} username={this.state.username} /></Route>
+          <Route path='/logout/'><Logout onLogout={this.handleLogout} /></Route>
+          <Route path='/all/cards'><AllCardsList token={this.state.token} username={this.state.username} /></Route>
+        </Switch>
       </Router>
     )
   }

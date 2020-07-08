@@ -11,14 +11,26 @@ export function getToken (username, password) {
   }).then(response => response.data.auth_token)
 }
 
-export function getCards (token) {
-  return request.get('/api/cards', {
+export function getCards (url, token) {
+  return request.get(url, {
     headers: {
       Authorization: `Token ${token}`
     }
   }).then(response => {
     return response.data
   })
+}
+
+export function getAllCards (token) {
+  return getCards('/api/cards/ ', token)
+}
+
+export function getMyCard (token, username) {
+  return getCards(`/api/user_cards/${username}/`, token)
+}
+
+export function getFollowedCards (token) {
+  return getCards('')
 }
 
 export function deleteCard (token, cardId) {

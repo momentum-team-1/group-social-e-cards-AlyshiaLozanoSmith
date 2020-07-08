@@ -65,7 +65,7 @@ class CardEditor extends React.Component {
 
   render () {
     if (this.state.created) {
-      return <Redirect to='/cards/all/' />
+      return <Redirect to='/all/cards/' />
     }
 
     return (
@@ -85,6 +85,7 @@ class CardEditor extends React.Component {
               <Form.Group controlId='formCardColor'>
                 <Form.Label>Card color</Form.Label>
                 <Form.Control as='select' onChange={this.handleColorChange}>
+                  <option value=''>white</option>
                   <option value='red'>Red</option>
                   <option value='purple'>purple</option>
                   <option value='blue'>blue</option>
@@ -93,18 +94,19 @@ class CardEditor extends React.Component {
 
               <Form.Group controlId='formCardBorder'>
                 <Form.Label>Card Border</Form.Label>
-                <Form.Control as='select' value={this.state.borderStyle} onSelect={this.handleBorderChange}>
-                  <option>dotted</option>
-                  <option>dashed</option>
-                  <option>solid</option>
+                <Form.Control as='select' onChange={this.handleBorderChange}>
+                  <option value=''>none</option>
+                  <option value='dotted'>dotted</option>
+                  <option value='dashed'>dashed</option>
+                  <option value='solid'>solid</option>
                 </Form.Control>
               </Form.Group>
 
               <Form.Group controlId='formCardFont'>
                 <Form.Label>Card Font</Form.Label>
-                <Form.Control as='select' value={this.state.font} onSelect={this.handleFontChange}>
-                  <option>helvetica</option>
-                  <option>courier new</option>
+                <Form.Control as='select' onChange={this.handleFontChange}>
+                  <option value='helvetica'>helvetica</option>
+                  <option value='courier new'>courier new</option>
                 </Form.Control>
               </Form.Group>
 
