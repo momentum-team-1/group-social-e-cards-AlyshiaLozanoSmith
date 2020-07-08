@@ -32,9 +32,12 @@ export default function Cards ({ cards }) {
                         fontCourierNew: card.font === 'courier new'
                       })}
                       >
+                        <Card.Title>{card.card_name}</Card.Title>
+                        <Card.Subtitle>{card.user}</Card.Subtitle>
                         <Card.Text>
                           {card.card_text}
                         </Card.Text>
+
                       </Card.Body>
                     </Card>
                   </Col>

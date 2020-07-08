@@ -11,6 +11,7 @@ import Profile from './components/Profile'
 import Home from './components/Home'
 import Logout from './components/Logout'
 import AllCardsList from './components/AllCardsList'
+import FollowedCardsList from './components/FollowedCardsList'
 
 class App extends React.Component {
   constructor () {
@@ -40,6 +41,7 @@ class App extends React.Component {
           <Route path='/profile'> <Profile token={this.state.token} username={this.state.username} /></Route>
           <Route path='/logout/'><Logout onLogout={this.handleLogout} /></Route>
           <Route path='/all/cards'><AllCardsList token={this.state.token} username={this.state.username} /></Route>
+          <Route path='/followed/cards'> <FollowedCardsList token={this.state.token} /></Route>
         </Switch>
       </Router>
     )

@@ -23,8 +23,6 @@ class AllCardsList extends React.Component {
   }
 
   render () {
-    console.log(this.props.token)
-    console.log(this.state.cards)
     return (
       <Cards cards={this.state.cards} />
     )

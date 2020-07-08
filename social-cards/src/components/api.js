@@ -25,12 +25,12 @@ export function getAllCards (token) {
   return getCards('/api/cards/ ', token)
 }
 
-export function getMyCard (token, username) {
+export function getMyCards (token, username) {
   return getCards(`/api/user_cards/${username}/`, token)
 }
 
 export function getFollowedCards (token) {
-  return getCards('')
+  return getCards('/api/cards/follower_cards/', token)
 }
 
 export function deleteCard (token, cardId) {
