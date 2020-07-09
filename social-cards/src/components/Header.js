@@ -1,8 +1,5 @@
 import React from 'react'
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,7 +17,7 @@ class Header extends React.Component {
                 <h1>E-greetings</h1>
                 <div className='nav-bar'>
                   <Nav />
-                  <Link to='/logout/'>Log out</Link>
+                  <Link to='/logout/'><p className='links'>Log out</p></Link>
                 </div>
               </div>
 

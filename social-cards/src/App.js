@@ -12,6 +12,8 @@ import Home from './components/Home'
 import Logout from './components/Logout'
 import AllCardsList from './components/AllCardsList'
 import FollowedCardsList from './components/FollowedCardsList'
+import CardDisplay from './components/CardDisplay'
+import DeleteCard from './components/DeleteCard'
 
 class App extends React.Component {
   constructor () {
@@ -42,6 +44,8 @@ class App extends React.Component {
           <Route path='/logout/'><Logout onLogout={this.handleLogout} /></Route>
           <Route path='/all/cards'><AllCardsList token={this.state.token} username={this.state.username} /></Route>
           <Route path='/followed/cards'> <FollowedCardsList token={this.state.token} /></Route>
+          <Route path='/delete-card'><DeleteCard onDelete={this.handleDelete} /></Route>
+          <Route path='/card/:id' render={({ match }) => <CardDisplay id={match.params.id} token={this.state.token} />} />
         </Switch>
       </Router>
     )

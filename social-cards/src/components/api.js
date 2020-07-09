@@ -22,23 +22,44 @@ export function getCards (url, token) {
 }
 
 export function getAllCards (token) {
-  return getCards('/api/cards/ ', token)
+  return getCards('/api/cards/all/ ', token)
 }
 
 export function getMyCards (token, username) {
-  return getCards(`/api/user_cards/${username}/`, token)
+  return getCards('/api/cards/', token)
 }
 
 export function getFollowedCards (token) {
   return getCards('/api/cards/follower_cards/', token)
 }
 
-export function deleteCard (token, cardId) {
-  return request.delete(`/api/cards/${cardId}/`, {
+export function deleteCard (token, id) {
+  return request.delete(`/api/cards/${id}/`, {
     headers: {
       Authorization: `Token ${token}`
     }
   }).then(response => {
     console.log(response.data)
+  })
+}
+
+export function getCard (token, id) {
+  return request.get(`/api/cards/${id}/`, {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  }).then(response => {
+    return response.data
+  })
+}
+
+export function getFollowedUsers (token) {
+  return request.get('/api/following/ ', {
+    headers: {
+      Authorization: `Token ${token}`
+    }
+  }).then(res => {
+    console.log('following', res.data)
+    return res.data
   })
 }

@@ -8,6 +8,11 @@ class MyCardsList extends React.Component {
     this.state = {
       cards: []
     }
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleDelete (event) {
+    this.setState({ card: {} })
   }
 
   componentDidMount () {
@@ -25,7 +30,7 @@ class MyCardsList extends React.Component {
   render () {
     console.log(this.state.cards)
     return (
-      <Cards cards={this.state.cards} />
+      <Cards cards={this.state.cards} onDelete={this.handleDelete} />
     )
   }
 }
